@@ -1,0 +1,6 @@
+(executable
+ (name deduktiParser)
+ (libraries dedukti.api dedukti.kernel dedukti.parsers)
+ (promote
+  (until-clean)
+  (into ../..)))
