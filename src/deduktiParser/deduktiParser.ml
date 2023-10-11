@@ -245,7 +245,7 @@ let main filename =
          LHSParams:[%s]\n\
          LHSNames:[%s]\n\
          RHSNames:[%s]\n\
-         RHSIdents:[%s]\n"
+         RHSIdents:[%s]\n\n"
         rinfo.name
         (rinfo.pattern_types |> IdentMap.bindings
         |> List.map (fun (ident, t_info) ->
