@@ -2,5 +2,5 @@ _build
 .DS_Store
 .merlin
 deduktiParser.exe
-output.out
+*.out
 venv

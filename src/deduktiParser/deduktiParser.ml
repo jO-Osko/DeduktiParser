@@ -267,8 +267,28 @@ let main filename =
   let _ = state.collected_defs in
   ()
 
+let dir_contents dir =
+  let rec loop result = function
+    | f :: fs when Sys.is_directory f ->
+        Sys.readdir f |> Array.to_list
+        |> List.map (Filename.concat f)
+        |> List.append fs |> loop result
+    | f :: fs -> loop (f :: result) fs
+    | [] -> result
+  in
+  loop [] [ dir ]
+
+let rec process_files file_list =
+  match file_list with
+  | [] -> ()
+  | head :: tail ->
+      if
+        String.length head >= 2
+        && String.sub head (String.length head - 2) 2 = "dk"
+      then main head;
+      process_files tail
+
 let () =
   Printexc.record_backtrace true;
-  for i = 1 to Array.length Sys.argv - 1 do
-    main Sys.argv.(i)
-  done
+  let files = dir_contents Sys.argv.(1) in
+  process_files files

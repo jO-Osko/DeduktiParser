@@ -2,7 +2,10 @@
 
 
 1. Clone dedukti to some folder (prefix it with `.` to disable dune from building it)
-2. run `make && ./deduktiParser.exe .deduktiGithub/libraries/**/*.dk > output.out`
+2. run `make && ./deduktiParser.exe .deduktiGithub/libraries > output.out`
+
+The program fill first find all the `.dk` files in the specified directory and
+then parse all of them.
 
 ## Troubleshooting
 
@@ -16,13 +19,3 @@ make: *** [Makefile:7: format] Error 127
 
 Make sure `dune` is installed and/or run 
 `eval $(opam env)` first.
-
-When running
-
-```./deduktiParser.exe .deduktiGithub/libraries/**/*.dk > output.out```,
-
-some libraries (those that are nested deeper) might not be processed. For those, you should use, for example, the pattern
-
-`.deduktiGithub/libraries/**/**/*.dk`
-
-instead.
