@@ -150,7 +150,7 @@ type fold_state = {
 }
 
 let main filename =
-  Printf.printf "Processing file: %s\n" filename;
+  Printf.printf "Processing file: %s\n\n" filename;
   let filename, parsed = parsed_result filename in
   let _filename = String.sub filename 0 (String.length filename - 3) in
   let initial_state =
